@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Glaze — Pâtisserie artisanale, Abidjan</title>
+<meta name="description" content="Sweet Glaze, pâtisserie artisanale à Abidjan : cookies, brownies, cinnamon rolls et donuts préparés à la commande.">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand-logo" href="#" onclick="hideMenu(); return false;" aria-label="Accueil Sweet Glaze">
+    <img src="images/logo.png" alt="Sweet Glaze">
+  </a>
+  <div class="topbar-right">
+    <span>Livraison partout à Abidjan · Yango</span>
+    <button id="lastOrderBtn" class="last-order-btn" onclick="openRecentOrders()" hidden>5 dernières commandes</button>
+    <button class="cart-btn" onclick="openCart()">Panier · <span id="cartCount">0</span></button>
+  </div>
+</div>
+
+<div id="homeSections">
+  <div class="wrap hero">
+    <div class="product-banner" aria-label="Aperçu de nos pâtisseries">
+      <div class="product-banner-images">
+        <img src="images/cookie.jpeg" alt="Cookie artisanal Sweet Glaze">
+        <img src="images/cinnamon-roll.jpeg" alt="Cinnamon roll artisanal Sweet Glaze">
+        <img src="images/cookies.jpeg" alt="Cookies artisanaux Sweet Glaze">
+      </div>
+      <div class="product-banner-overlay">
+        <span>Fait maison</span>
+        <strong>Des douceurs qui donnent envie</strong>
+        <span>Cookies · Brownies · Cinnamon rolls · Donuts</span>
+      </div>
+    </div>
+    <div class="eyebrow">Pâtisserie artisanale faite maison</div>
+    <h1>Sweet&nbsp;Glaze</h1>
+    <p class="lede">Cookies fondants, brownies gourmands, cinnamon rolls et donuts glacés, préparés à la commande à Abidjan.</p>
+    <a class="cta" href="#" onclick="showMenu(); return false;">Voir le menu</a>
+    <a class="cta secondary" href="#custom" onclick="scrollToCustom(event)">Commande personnalisée</a>
+  </div>
+
+  <section id="custom" class="band">
+    <div class="wrap">
+      <div class="section-title">Sur mesure</div>
+      <h2 class="section-heading">Commande personnalisée</h2>
+      <div class="custom-card">
+        <div>
+          <h3>À partir de 10 000&nbsp;F</h3>
+          <p>Message, couleurs, forme, occasion spéciale — dis-nous ce que tu imagines et on l'adapte. Les détails et le devis se font directement par WhatsApp.</p>
+        </div>
+        <a class="cta" href="https://wa.me/2250153203493?text=Bonjour%2C%20je%20souhaite%20discuter%20d'une%20commande%20personnalis%C3%A9e%20Sweet%20Glaze" target="_blank" rel="noopener">Discuter sur WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-title">Notre histoire</div>
+    <div class="story">
+      <div class="quote-mark">"</div>
+      <p>J'ai toujours aimé la pâtisserie — c'est mon love language. Je la pratique pour ceux que j'aime : ma famille, mes amis. Depuis toute petite, je rêvais d'ouvrir ma propre boutique, mais la peur du regard des autres et des critiques m'a longtemps retenue. Pour mes 19 ans, je me suis offert un cadeau : me lancer enfin, pour que la petite fille que j'étais puisse accomplir son rêve.</p>
+    </div>
+  </section>
+
+  <section class="band delivery-section">
+    <div class="wrap">
+      <div class="section-title">Livraison &amp; paiement</div>
+      <h2 class="section-heading">Comment ça se passe</h2>
+      <div class="delivery-grid">
+        <div><h4>Zone</h4><p>Livraison partout à Abidjan, via Yango</p></div>
+        <div><h4>Commande</h4><p>Ajoute tes envies au panier, on confirme sous 24h</p></div>
+        <div>
+          <h4>Paiement</h4>
+          <p>Au choix, une fois la commande confirmée :</p>
+          <div class="pay-icons">
+            <span class="pay-pill">Wave</span>
+            <span class="pay-pill">Moov Money</span>
+            <span class="pay-pill">Espèces</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-title">Avis clients</div>
+    <h2 class="section-heading">Ce qu'on en dit</h2>
+    <div id="reviewsMount"></div>
+    <div class="review-form-wrap">
+      <h3>Laisser un avis</h3>
+      <p id="reviewStatus" class="review-status" role="status" aria-live="polite"></p>
+      <form id="reviewForm" action="https://formspree.io/f/xdekoalg" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="Nouvel avis Sweet Glaze">
+        <input type="hidden" id="rv-product" name="produit" value="Toute la commande">
+        <div class="field"><label for="rv-name">Ton prénom</label><input id="rv-name" name="nom" type="text" required></div>
+        <div class="field">
+          <label for="rv-rating">Ta note</label>
+          <select id="rv-rating" name="note" required>
+            <option value="">Choisis une note</option>
+            <option value="5 étoiles">5 étoiles</option>
+            <option value="4 étoiles">4 étoiles</option>
+            <option value="3 étoiles">3 étoiles</option>
+            <option value="2 étoiles">2 étoiles</option>
+            <option value="1 étoile">1 étoile</option>
+          </select>
+        </div>
+        <div class="field"><label for="rv-comment">Ton commentaire</label><input id="rv-comment" name="commentaire" type="text" required></div>
+        <div class="field">
+          <label for="rv-photo">Une photo (optionnel)</label>
+          <div class="file-picker">
+            <input id="rv-photo" name="photo" type="file" accept="image/*" onchange="updatePhotoName(this)">
+            <label class="file-picker-button" for="rv-photo">Choisir une photo</label>
+            <span id="photoName" class="file-name">Aucun fichier sélectionné</span>
+            <button type="button" id="clearPhotoBtn" class="clear-file" onclick="clearPhoto()" hidden>Supprimer</button>
+          </div>
+        </div>
+        <button type="submit" class="btn-full btn-inline">Envoyer mon avis</button>
+      </form>
+      <p class="review-note">Ton avis est envoyé directement à Sweet Glaze — il sera peut-être affiché ici prochainement !</p>
+    </div>
+  </section>
+</div>
+
+<section id="menu" class="wrap menu-page">
+  <div class="section-title">Le menu</div>
+  <h2 class="section-heading">Ce qu'on prépare pour toi</h2>
+  <p class="menu-description">Commande à partir de 1 pièce par saveur (6 maximum) — les suppléments se commandent à l'unité.</p>
+  <div id="menuMount"></div>
+  <a href="#" onclick="hideMenu(); return false;" class="menu-back">Retour à l'accueil</a>
+</section>
+
+<section class="reviews-bottom wrap" aria-labelledby="reviews-bottom-title">
+  <div class="section-title">Ils ont goûté</div>
+  <h2 id="reviews-bottom-title" class="section-heading">Les avis de nos clients</h2>
+  <div id="bottomReviewsMount" class="reviews-grid">
+    <article class="review-card review-placeholder">
+      <span class="review-stars">★★★★★</span>
+      <p>Ton avis pourra apparaître ici prochainement.</p>
+    </article>
+    <article class="review-card review-placeholder">
+      <span class="review-stars">★★★★★</span>
+      <p>Un deuxième avis client pourra être affiché ici.</p>
+    </article>
+    <article class="review-card review-placeholder">
+      <span class="review-stars">★★★★★</span>
+      <p>Un troisième avis client pourra être affiché ici.</p>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Sweet Glaze</h3>
+      <p>Pâtisserie artisanale faite maison à Abidjan.</p>
+    </div>
+    <div class="contact">+225 01 53 20 34 93<br>SweetGlaze.ci@gmail.com<br>@sweetglaze</div>
+  </div>
+  <div class="bottom wrap">© Sweet Glaze — tous droits réservés</div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Ton panier</h3>
+    <button class="drawer-close" onclick="closeCart()" aria-label="Fermer le panier">&times;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot" id="drawerFoot"></div>
+</div>
+
+<div class="image-lightbox" id="imageLightbox" aria-hidden="true" onclick="closeImage()">
+  <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Photo agrandie" onclick="event.stopPropagation()">
+    <button class="lightbox-close" type="button" onclick="closeImage()" aria-label="Fermer la photo">&times;</button>
+    <img id="lightboxImage" src="" alt="">
+    <p id="lightboxCaption"></p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
