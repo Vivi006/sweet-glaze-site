@@ -117,7 +117,7 @@ function renderMenu(){
 
 function changeQty(id, delta){
   const p = products.find(p=>p.id===id);
-  const min = p && p.cat === 'Box découverte' ? 2 : 1;
+  const min = p && (p.cat === 'Box découverte' || p.noMinMax) ? 1 : 2;
   const max = 6;
   const current = cart[id] || 0;
   const next = delta > 0
